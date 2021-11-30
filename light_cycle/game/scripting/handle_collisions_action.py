@@ -8,7 +8,7 @@ class HandleCollisionsAction(Action):
     An update action that handles interactions between the actors.
     
     The responsibility of HandleCollisionsAction is to handle the situation when the cycle collides
-    with the trail, or the cycle collides with its segments, or the game is over.
+    with the trail, or when the cycle collides with another cycle, or when the game is over.
 
     Attributes:
         _is_game_over (boolean): Whether or not the game is over.
@@ -48,17 +48,17 @@ class HandleCollisionsAction(Action):
             trail.reset()
     
     def _handle_cycle_cycle_collision(self, cast):
-        """Sets the game over flag if the cycle collides with one of its segments.
+        """Sets the game over flag if the cycle collides with one of its trails.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
         cycle = cast.get_first_actor("cycles")
-        head = cycle.get_segments()[0]
-        segments = cycle.get_segments()[1:]
+        head = cycle.get_trails()[0]
+        trail = cycle.get_trails()[1:]
         
-        for segment in segments:
-            if head.get_position().equals(segment.get_position()):
+        for trail in trails:
+            if head.get_position().equals(trail.get_position()):
                 self._is_game_over = True
         
     def _handle_game_over(self, cast):
@@ -69,7 +69,7 @@ class HandleCollisionsAction(Action):
         """
         if self._is_game_over:
             cycle = cast.get_first_actor("cycles")
-            segments = cycle.get_segments()
+            trails = cycle.get_trails()
             trail = cast.get_first_actor("trails")
 
             x = int(constants.MAX_X / 2)
@@ -81,6 +81,6 @@ class HandleCollisionsAction(Action):
             message.set_position(position)
             cast.add_actor("messages", message)
 
-            for segment in segments:
-                segment.set_color(constants.WHITE)
+            for trail in trails:
+                trail.set_color(constants.WHITE)
             trail.set_color(constants.WHITE)
