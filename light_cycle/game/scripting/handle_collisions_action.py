@@ -2,6 +2,7 @@ import constants
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
+from light_cycle.constants import WHITE
 
 class HandleCollisionsAction(Action):
     """
@@ -31,21 +32,22 @@ class HandleCollisionsAction(Action):
             self._handle_game_over(cast)
 
     def _handle_cycle_trail_collision(self, cast):
-        """Updates the score nd moves the trail if the cycle collides with the trail.
+        """Updates the score and moves the trail if the cycle collides with the trail.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score = cast.get_first_actor("scores")
-        trail = cast.get_first_actor("trails")
-        cycle = cast.get_first_actor("cycles")
-        head = cycle.get_head()
+        # score = cast.get_first_actor("scores")
+        # trail = cast.get_first_actor("trails")
+        # cycle = cast.get_first_actor("cycles")
+        # head = cycle.get_head()
 
-        if head.get_position().equals(trail.get_position()):
-            points = trail.get_points()
-            cycle.grow_tail(points)
-            score.add_points(points)
-            trail.reset()
+        # if head.get_position().equals(trail.get_position()):
+        #     points = trail.get_points()
+        #     cycle.grow_tail(points)
+        #     score.add_points(points)
+        #     trail.reset()
+        pass
     
     def _handle_cycle_cycle_collision(self, cast):
         """Sets the game over flag if the cycle collides with one of its trails.
@@ -53,13 +55,14 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        cycle = cast.get_first_actor("cycles")
-        head = cycle.get_trails()[0]
-        trail = cycle.get_trails()[1:]
+        # cycle = cast.get_first_actor("cycles")
+        # head = cycle.get_trails()[0]
+        # trail = cycle.get_trails()[1:]
         
-        for trail in trails:
-            if head.get_position().equals(trail.get_position()):
-                self._is_game_over = True
+        # for trail in trails:
+        #     if head.get_position().equals(trail.get_position()):
+        #         self._is_game_over = True
+        pass
         
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the cycle and trail white if the game is over.
@@ -82,5 +85,5 @@ class HandleCollisionsAction(Action):
             cast.add_actor("messages", message)
 
             for trail in trails:
-                trail.set_color(constants.WHITE)
-            trail.set_color(constants.WHITE)
+                trail.set_color(WHITE)
+            trail.set_color(WHITE)
