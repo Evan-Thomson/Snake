@@ -25,3 +25,9 @@ class Score(Actor):
         """
         self._points += points
         self.set_text(f"Score: {self._points}")
+
+    def reset_points(self):
+        """Changes the number of points to 0.
+        """
+        self._points = 0
+        self.set_text(f"Score: {self._points}")
