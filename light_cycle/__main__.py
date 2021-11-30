@@ -3,7 +3,7 @@ import constants
 from game.casting.cast import Cast
 from game.casting.food import Food
 from game.casting.score import Score
-from game.casting.snake import Snake
+from game.casting.cycle import Cycle
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
@@ -20,8 +20,9 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("foods", Food())
-    cast.add_actor("snakes", Snake())
+    #cast.add_actor("foods", Food())
+    cast.add_actor("cycles", Cycle((0,128,255)))
+    cast.add_actor("cycles", Cycle((255,255,0)))
     cast.add_actor("scores", Score())
    
     # start the game
