@@ -5,9 +5,10 @@ from game.shared.point import Point
 
 class Cycle(Actor):
     """
-    A long limbless reptile.
+    A long two wheeled motor vehicle that leaves a trail of
+    nuclear energy behind itself.
     
-    The responsibility of Snake is to move itself.
+    The responsibility of Cycle is to move itself and leave a trail.
 
     Attributes:
         _points (int): The number of points the food is worth.
