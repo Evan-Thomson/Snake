@@ -1,4 +1,4 @@
-import constants
+from game.constants import *
 
 from game.casting.cast import Cast
 from game.casting.score import Score

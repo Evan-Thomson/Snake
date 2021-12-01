@@ -1,5 +1,5 @@
 import pyray
-import constants
+import game.constants as constants
 
 
 class VideoService:

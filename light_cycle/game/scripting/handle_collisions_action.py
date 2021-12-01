@@ -1,8 +1,8 @@
-import constants
+import game.constants as constants
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
-from light_cycle.constants import WHITE
+from game.constants import WHITE
 
 class HandleCollisionsAction(Action):
     """
