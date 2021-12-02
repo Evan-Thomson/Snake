@@ -38,11 +38,24 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score = cast.get_first_actor("scores")
-        trail = cast.get_first_actor("trails")
-        cycle = cast.get_first_actor("cycles")
-        head = cycle.get_head()
+        score1 = cast.get_first_actor("scores")
+        score2 = cast.get_last_actor("scores")
+        cycle1 = cast.get_first_actor("cycles")
+        cycle2 = cast.get_last_actor("cycles")
+        trail1 = cycle1.get_segments()
+        trail2 = cycle2.get_segments()
+        head1 = cycle1.get_head()
+        head2 = cycle2.get_head()
 
+        for segment in trail2:
+            if head1.get_position().equals(segment.get_position()):
+                score2.add_points(1)
+                self._is_game_reset = True
+
+        for segment in trail1:
+            if head2.get_position().equals(segment.get_position()):
+                score1.add_points(1)
+                self._is_game_reset = True
         # if head.get_position().equals(trail.get_position()):
         #     points = trail.get_points()
         #     cycle.grow_tail(points)
