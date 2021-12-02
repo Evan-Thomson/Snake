@@ -19,6 +19,7 @@ class HandleCollisionsAction(Action):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_reset = False
 
+    # Owner: Evan Thomson
     def execute(self, cast, script):
         """Executes the handle collisions action.
 
@@ -31,6 +32,7 @@ class HandleCollisionsAction(Action):
             self._handle_cycle_cycle_collision(cast)
             self._handle_game_reset(cast)
 
+    # Owner: Evan Thomson
     def _handle_cycle_trail_collision(self, cast):
         """Updates the score and moves the trail if the cycle collides with the trail.
         
@@ -47,25 +49,21 @@ class HandleCollisionsAction(Action):
             cycle.grow_tail(points)
             score.add_points(points)
             trail.reset()
-        pass
-    
+    # Owner: Evan Thomson
     def _handle_cycle_cycle_collision(self, cast):
         """Sets the game reset flag if the cycle collides with one of its trails.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        # cycle = cast.get_first_actor("cycles")
-        # head = cycle.get_trails()[0]
-        # trail = cycle.get_trails()[1:]
+        cycle = cast.get_first_actor("cycles")
+        head = cycle.get_head()[0]
+        trail = cycle.get_segments()[1:]
         
-        # for trail in trails:
-        #     if head.get_position().equals(trail.get_position()):
-        #         self._is_game_reset = True
-        pass
-        
+
+    # Owner: Evan Thomson
     def _handle_game_reset(self, cast):
-        """
+        """Handles game reset when one cycle collides with another actor.
         
         Args:
             cast (Cast): The cast of Actors in the game.
