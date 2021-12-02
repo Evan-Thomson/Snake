@@ -1,4 +1,4 @@
-from game.constants import *
+import game.constants
 
 from game.casting.cast import Cast
 from game.casting.score import Score
@@ -24,7 +24,8 @@ def main():
     ORANGE = Color(255,255,0)
     cast.add_actor("cycles", Cycle(BLUE, cast))
     cast.add_actor("cycles", Cycle(ORANGE, cast))
-    cast.add_actor("scores", Score())
+    cast.add_actor("scores", Score(5, 5))
+    cast.add_actor("scores", Score(20, 5))
    
     # start the game
     keyboard_service = KeyboardService()

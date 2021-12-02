@@ -45,10 +45,11 @@ class HandleCollisionsAction(Action):
         head = cycle.get_head()
 
         if trail != None and head.get_position().equals(trail.get_position()):
-            points = trail.get_points()
-            cycle.grow_tail(points)
-            score.add_points(points)
-            trail.reset()
+            pass
+            # points = trail.get_points()
+            # cycle.grow_tail(points)
+            # score.add_points(points)
+            # trail.reset()
     # Owner: Evan Thomson
     def _handle_cycle_cycle_collision(self, cast):
         """Sets the game reset flag if the cycle collides with one of its trails.
@@ -57,7 +58,7 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         cycle = cast.get_first_actor("cycles")
-        head = cycle.get_head()[0]
+        head = cycle.get_head()
         trail = cycle.get_segments()[1:]
         
 
