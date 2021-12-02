@@ -46,18 +46,22 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s'):
             self._direction = Point(0, constants.CELL_SIZE)
         
+        # Owner: Evan Thomson
         # left
         if self._keyboard_service.is_key_down('j'):
             self._direction2 = Point(-constants.CELL_SIZE, 0)
         
+        # Owner: Evan Thomson
         # right
         if self._keyboard_service.is_key_down('l'):
             self._direction2 = Point(constants.CELL_SIZE, 0)
         
+        # Owner: Evan Thomson
         # up
         if self._keyboard_service.is_key_down('i'):
             self._direction2 = Point(0, -constants.CELL_SIZE)
         
+        # Owner: Evan Thomson
         # down
         if self._keyboard_service.is_key_down('k'):
             self._direction2 = Point(0, constants.CELL_SIZE)
