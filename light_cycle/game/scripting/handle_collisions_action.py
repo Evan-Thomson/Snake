@@ -56,11 +56,6 @@ class HandleCollisionsAction(Action):
             if head2.get_position().equals(segment.get_position()):
                 score1.add_points(1)
                 self._is_game_reset = True
-        # if head.get_position().equals(trail.get_position()):
-        #     points = trail.get_points()
-        #     cycle.grow_tail(points)
-        #     score.add_points(points)
-        #     trail.reset()
 
     # Owner: Evan Thomson
     def _handle_cycle_cycle_collision(self, cast):
@@ -69,12 +64,14 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        cycle = cast.get_first_actor("cycles")
-        head = cycle.get_head()
-        trail = cycle.get_segments()[1:]
+        cycle1 = cast.get_first_actor("cycles")
+        cycle2 = cast.get_last_actor("cycles")
 
-        # if head.get_position().equals(trail.get_position()):
-        #     trail.reset()
+        head1 = cycle1.get_head()
+        head2 = cycle2.get_head()
+
+        if head1.get_position().equals(head2.get_position()):
+            self._is_game_reset = True
 
     # Owner: Evan Thomson
     def _handle_game_reset(self, cast):
@@ -92,3 +89,5 @@ class HandleCollisionsAction(Action):
             message.set_text("Game reset!")
             message.set_position(position)
             cast.add_actor("messages", message)
+
+            self._is_game_reset = False
