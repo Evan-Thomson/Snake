@@ -12,7 +12,7 @@ class Score(Actor):
     Attributes:
         _points (int): The points earned in the game.
     """
-    def __init__(self, x, y):
+    def __init__(self):
         super().__init__()
         self._points = 0
         self.add_points(0)

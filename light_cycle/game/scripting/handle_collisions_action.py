@@ -44,12 +44,12 @@ class HandleCollisionsAction(Action):
         cycle = cast.get_first_actor("cycles")
         head = cycle.get_head()
 
-        if trail != None and head.get_position().equals(trail.get_position()):
-            pass
-            # points = trail.get_points()
-            # cycle.grow_tail(points)
-            # score.add_points(points)
-            # trail.reset()
+        if head.get_position().equals(trail.get_position()):
+            points = trail.get_points()
+            cycle.grow_tail(points)
+            score.add_points(points)
+            trail.reset()
+
     # Owner: Evan Thomson
     def _handle_cycle_cycle_collision(self, cast):
         """Sets the game reset flag if the cycle collides with one of its trails.
@@ -58,9 +58,11 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         cycle = cast.get_first_actor("cycles")
-        head = cycle.get_head()
-        trail = cycle.get_segments()[1:]
-        
+        head = cycle.get_head()[0]
+        trail = cycle.get_trail()[1:]
+
+        if head.get_position().equals(trail.get_position()):
+            trail.reset()
 
     # Owner: Evan Thomson
     def _handle_game_reset(self, cast):
@@ -82,7 +84,3 @@ class HandleCollisionsAction(Action):
             message.set_text("Game reset!")
             message.set_position(position)
             cast.add_actor("messages", message)
-
-            for trail in trails:
-                trail.set_color(WHITE)
-            trail.set_color(WHITE)

@@ -1,4 +1,4 @@
-import game.constants
+from game.constants import *
 
 from game.casting.cast import Cast
 from game.casting.score import Score
@@ -22,10 +22,9 @@ def main():
     #cast.add_actor("foods", Food())
     BLUE = Color(0,128,255)
     ORANGE = Color(255,255,0)
-    cast.add_actor("cycles", Cycle(BLUE, cast))
-    cast.add_actor("cycles", Cycle(ORANGE, cast))
-    cast.add_actor("scores", Score(5, 5))
-    cast.add_actor("scores", Score(20, 5))
+    cast.add_actor("cycles", Cycle(BLUE))
+    cast.add_actor("cycles", Cycle(ORANGE))
+    cast.add_actor("scores", Score())
    
     # start the game
     keyboard_service = KeyboardService()
