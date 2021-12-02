@@ -1,8 +1,7 @@
-import game.constants as constants
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
-from game.constants import WHITE
+from game.constants import MAX_X, MAX_Y
 
 class HandleCollisionsAction(Action):
     """
@@ -52,7 +51,7 @@ class HandleCollisionsAction(Action):
 
     # Owner: Evan Thomson
     def _handle_cycle_cycle_collision(self, cast):
-        """Sets the game reset flag if the cycle collides with one of its trails.
+        """Sets the game reset flag if the cycle collides with another cycle.
         
         Args:
             cast (Cast): The cast of Actors in the game.
@@ -72,12 +71,8 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_reset:
-            cycle = cast.get_first_actor("cycles")
-            trails = cycle.get_trails()
-            trail = cast.get_first_actor("trails")
-
-            x = int(constants.MAX_X / 2)
-            y = int(constants.MAX_Y / 2)
+            x = int(MAX_X / 2)
+            y = int(MAX_Y / 2)
             position = Point(x, y)
 
             message = Actor()
