@@ -42,7 +42,7 @@ class HandleCollisionsAction(Action):
         cycle = cast.get_first_actor("cycles")
         head = cycle.get_head()
 
-        if head.get_position().equals(trail.get_position()):
+        if trail != None and head.get_position().equals(trail.get_position()):
             points = trail.get_points()
             cycle.grow_tail(points)
             score.add_points(points)
