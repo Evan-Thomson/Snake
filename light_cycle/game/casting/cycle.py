@@ -21,7 +21,7 @@ class Cycle(Actor):
         self._color = color
         self._cast = cast
 
-    def get_segments(self):
+    def get_trails(self):
         return self._segments
 
     def move_next(self):
@@ -39,7 +39,7 @@ class Cycle(Actor):
     def get_head(self):
         return self._segments[0]
 
-    def grow_tail(self, number_of_segments):
+    def grow_trail(self, number_of_segments):
         for i in range(number_of_segments):
             tail = self._segments[-1]
             velocity = tail.get_velocity()
