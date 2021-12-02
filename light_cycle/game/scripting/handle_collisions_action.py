@@ -44,11 +44,11 @@ class HandleCollisionsAction(Action):
         cycle = cast.get_first_actor("cycles")
         head = cycle.get_head()
 
-        if head.get_position().equals(trail.get_position()):
-            points = trail.get_points()
-            cycle.grow_tail(points)
-            score.add_points(points)
-            trail.reset()
+        # if head.get_position().equals(trail.get_position()):
+        #     points = trail.get_points()
+        #     cycle.grow_tail(points)
+        #     score.add_points(points)
+        #     trail.reset()
 
     # Owner: Evan Thomson
     def _handle_cycle_cycle_collision(self, cast):
@@ -58,11 +58,11 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         cycle = cast.get_first_actor("cycles")
-        head = cycle.get_head()[0]
-        trail = cycle.get_trail()[1:]
+        head = cycle.get_head()
+        trail = cycle.get_segments()[1:]
 
-        if head.get_position().equals(trail.get_position()):
-            trail.reset()
+        # if head.get_position().equals(trail.get_position()):
+        #     trail.reset()
 
     # Owner: Evan Thomson
     def _handle_game_reset(self, cast):

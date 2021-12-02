@@ -20,10 +20,10 @@ def main():
     # create the cast
     cast = Cast()
     #cast.add_actor("foods", Food())
-    BLUE = Color(0,128,255)
+    BLUE = Color(255,128,255)
     ORANGE = Color(255,255,0)
-    cast.add_actor("cycles", Cycle(BLUE))
-    cast.add_actor("cycles", Cycle(ORANGE))
+    cast.add_actor("cycles", Cycle(BLUE, Point(10,10)))
+    cast.add_actor("cycles", Cycle(ORANGE, Point(20,20)))
     cast.add_actor("scores", Score())
    
     # start the game
