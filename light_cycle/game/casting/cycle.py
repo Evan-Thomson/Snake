@@ -28,12 +28,15 @@ class Cycle(Actor):
         # move all segments
         self.grow_tail(1)
         for segment in self._segments:
-            segment.move_next()
+            #segment.move_next()
+            pass
+        head = self._segments[0]
+        head.move_next()
         # update velocities
         for i in range(len(self._segments) - 1, 0, -1):
             trailing = self._segments[i]
             previous = self._segments[i - 1]
-            velocity = previous.get_velocity()
+            velocity = Point(0,0)
             trailing.set_velocity(velocity)
 
     def get_head(self):
@@ -41,15 +44,13 @@ class Cycle(Actor):
 
     def grow_tail(self, number_of_segments):
         for i in range(number_of_segments):
-            tail = self._segments[-1]
-            velocity = tail.get_velocity()
+            head = self._segments[0]
+            velocity = head.get_velocity()
             offset = velocity.reverse()
-            position = tail.get_position().add(offset)
-            
+            position = head.get_position()            
             segment = Actor()
             self._cast.add_actor("trails", segment)
             segment.set_position(position)
-            segment.set_velocity(velocity)
             segment.set_text("#")
             segment.set_color(self._color)
             self._segments.append(segment)
