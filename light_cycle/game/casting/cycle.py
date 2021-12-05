@@ -46,8 +46,8 @@ class Cycle(Actor):
             segment.set_color(self._color)
             self._segments.append(segment)
 
-            if __debug__:
-                print(len(self._segments))
+            # if __debug__:
+            #     print(len(self._segments))
 
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
